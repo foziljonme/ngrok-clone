@@ -1,0 +1,24 @@
+{
+  "name": "ngrok",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "server": "nodemon src/server.js",
+    "client": "wait-on http://localhost:8080 && nodemon --watch client.js client.js",
+    "dev": "concurrently -n SERVER,CLIENT -c yellow,green \"npm run server\" \"npm run client\""
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "4",
+    "jsonwebtoken": "^9.0.2",
+    "node-fetch": "^3.3.2",
+    "nodemon": "^3.1.10",
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "wait-on": "^9.0.1"
+  }
+}
