@@ -7,7 +7,8 @@
   "scripts": {
     "server": "nodemon src/server.js",
     "client": "wait-on http://localhost:8080 && nodemon --watch client.js client.js",
-    "dev": "concurrently -n SERVER,CLIENT -c yellow,green \"npm run server\" \"npm run client\""
+    "dev": "concurrently -n SERVER,CLIENT -c yellow,green \"npm run server\" \"npm run client\"",
+    "start": "node src/server.js"
   },
   "dependencies": {
     "dotenv": "^17.2.3",
