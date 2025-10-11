@@ -14,7 +14,8 @@ class ForwardHandler {
     const tunnelId = host.split(".")[0]; // "myapp"
     const client = tunnels.get(tunnelId);
     const currentHost = sanitizeBaseUrl(req.headers.host);
-
+    console.log(`Incoming request for host: ${currentHost}`);
+    console.log(`Tunnel ID: ${tunnelId}`);
     if (currentHost.startsWith(sanitizeBaseUrl(BASE_URL))) {
       console.log("Request to base URL, not forwarding");
       return res
