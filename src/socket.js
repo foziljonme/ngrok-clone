@@ -35,16 +35,6 @@ export default function handleSocket(server) {
     }
   });
 
-  // Periodic cleanup of stale connections
-  setInterval(() => {
-    for (const [id, ws] of tunnels.entries()) {
-      if (ws.readyState !== WebSocket.OPEN) {
-        console.log(`Cleaning up stale tunnel: ${id}`);
-        tunnels.delete(id);
-      }
-    }
-  }, 60000); // Every minute
-
   wss.on("connection", (ws, req) => {
     console.log("New WebSocket connection established");
 
