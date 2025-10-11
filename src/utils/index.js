@@ -20,3 +20,10 @@ export function generateRandomSubdomainString(length = 10) {
   }
   return result;
 }
+
+export function sanitizeBaseUrl(url) {
+  return url
+    .replace(/https?:\/\//, "")
+    .replace(/\/$/, "")
+    .replace(/:\d+$/, "");
+}

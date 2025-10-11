@@ -1,5 +1,9 @@
+import dotenv from "dotenv";
+dotenv.config();
+import { sanitizeBaseUrl } from "../utils/index.js";
 import pendingResponses from "./pendingresponses.service.js";
 import tunnels from "./tunnels.service.js";
+const BASE_URL = process.env.BASE_URL;
 
 class ForwardHandler {
   constructor() {}
@@ -9,20 +13,23 @@ class ForwardHandler {
     // Expect subdomain like myapp.localhost:8080
     const tunnelId = host.split(".")[0]; // "myapp"
     const client = tunnels.get(tunnelId);
+    const currentHost = sanitizeBaseUrl(req.headers.host);
 
-    if (req.headers.host.startsWith("localhost")) {
+    if (currentHost.startsWith(sanitizeBaseUrl(BASE_URL))) {
+      console.log("Request to base URL, not forwarding");
       return res
         .status(200)
         .send("Listening on tunnels on other subdomains")
         .end();
     } else if (!client) {
+      console.log(
+        `No tunnel client for id ${tunnelId}, rediricting to BASE_URL: ${BASE_URL}`
+      );
       // Perform a 301 Moved Permanently redirect
       res.writeHead(301, {
-        Location: "http://localhost:8080", // Redirect to a path within the same site
-        // Or to an external URL: 'Location': 'https://www.example.com/new-page'
+        Location: BASE_URL, // Redirect to a path within the same site
       });
       return res.end(); // End the response after sending the redirect header
-      // return res.status(404).send("No tunnel found for host " + tunnelId);
     }
 
     const requestId =

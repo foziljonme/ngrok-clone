@@ -1,17 +1,13 @@
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import http from "http";
-import {
-  generateRandomSubdomainString,
-  issueTunnel,
-  verifyToken,
-} from "./utils/index.js";
+import { generateRandomSubdomainString, issueTunnel } from "./utils/index.js";
 import handleSocket from "./socket.js";
-import dotenv from "dotenv";
 import forwardHandler from "./services/forwardHandler.service.js";
-dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT;
 
 const server = http.createServer(app);
 
