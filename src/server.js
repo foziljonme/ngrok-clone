@@ -5,6 +5,7 @@ import http from "http";
 import { generateRandomSubdomainString, issueTunnel } from "./utils/index.js";
 import handleSocket from "./socket.js";
 import forwardHandler from "./services/forwardHandler.service.js";
+import tunnels from "./services/tunnels.service.js";
 
 const app = express();
 const PORT = process.env.PORT;
@@ -18,6 +19,13 @@ app.post("/tunnels", (req, res) => {
   const token = issueTunnel(tunnelId);
   console.log("serving tunnel: ", tunnelId);
   res.status(200).json({ tunnelId, token });
+});
+
+app.get("/stats", (req, res) => {
+  res.json({
+    activeTunnels: tunnels.size,
+    memory: process.memoryUsage(),
+  });
 });
 
 app.all("*", forwardHandler.handle);
