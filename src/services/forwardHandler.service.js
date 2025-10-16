@@ -1,7 +1,10 @@
-// ...existing code...
+import path from "path";
+import dotenv from "dotenv";
+dotenv.config();
+import { sanitizeBaseUrl } from "../utils/index.js";
 import pendingResponses from "./pendingresponses.service.js";
 import tunnels from "./tunnels.service.js";
-import path from "path";
+const BASE_URL = process.env.BASE_URL;
 
 class ForwardHandler {
   constructor() {}

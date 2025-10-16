@@ -1,8 +1,9 @@
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import http from "http";
 import { generateRandomSubdomainString, issueTunnel } from "./utils/index.js";
 import handleSocket from "./socket.js";
-import dotenv from "dotenv";
 import forwardHandler from "./services/forwardHandler.service.js";
 import path from "path";
 
@@ -47,6 +48,13 @@ app.post("/tunnels", (req, res) => {
   const token = issueTunnel(tunnelId);
   console.log("serving tunnel: ", tunnelId);
   res.status(200).json({ tunnelId, token });
+});
+
+app.get("/stats", (req, res) => {
+  res.json({
+    activeTunnels: tunnels.size,
+    memory: process.memoryUsage(),
+  });
 });
 
 app.all("*", async (req, res) => {

@@ -10,7 +10,9 @@ export function issueTunnel(tunnelId) {
 }
 
 // generate a random subdomain string
-export function generateRandomSubdomainString(length = 10) {
+export function generateRandomSubdomainString(
+  length = parseInt(process.env.SUBDOMAIN_LENGTH) || 5
+) {
   const alphabet = "abcdefghijklmnopqrstuvwxyz0123456789";
   let result = "";
   const bytes = crypto.randomBytes(length);
@@ -19,4 +21,11 @@ export function generateRandomSubdomainString(length = 10) {
     result += alphabet[bytes[i] % alphabet.length];
   }
   return result;
+}
+
+export function sanitizeBaseUrl(url) {
+  return url
+    .replace(/https?:\/\//, "")
+    .replace(/\/$/, "")
+    .replace(/:\d+$/, "");
 }
