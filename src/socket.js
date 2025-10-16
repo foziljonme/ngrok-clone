@@ -4,9 +4,11 @@ import tunnels from "./services/tunnels.service.js";
 import pendingResponses from "./services/pendingresponses.service.js";
 
 export default function handleSocket(server) {
+  console.log("Setting up WebSocket server...");
   const wss = new WebSocketServer({ noServer: true });
 
   server.on("upgrade", (req, socket, head) => {
+    console.log("Received upgrade request:", req.url);
     const url = new URL(req.url || "", `http://${req.headers.host}`);
 
     const token = url.searchParams.get("token");
