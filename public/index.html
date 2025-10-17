@@ -1,60 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>QuickTunel – Expose your local server securely</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <!-- Header / Navbar -->
-  <header>
-    <div class="container nav">
-      <h1 class="logo">QuickTunel</h1>
-      <nav>
-        <a href="#features">Features</a>
-        <a href="#docs">Docs</a>
-        <a href="https://github.com/yourusername/Quicktunel" target="_blank">GitHub</a>
-      </nav>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuickTunel – Expose your local server securely</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-X0C26MNC2D"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-  <!-- Hero -->
-  <section id="hero">
-    <div class="container hero-content">
-      <h2>Instant public URLs for your local servers</h2>
-      <p>Share your local development environment with the world securely.  
-      Simple, fast, and open source.</p>
-      <a href="#docs" class="btn">Get Started</a>
-    </div>
-  </section>
+      gtag("config", "G-X0C26MNC2D");
+    </script>
+  </head>
+  <body>
+    <!-- Header / Navbar -->
+    <header>
+      <div class="container nav">
+        <h1 class="logo">QuickTunel</h1>
+        <nav>
+          <a href="#features">Features</a>
+          <a href="#docs">Docs</a>
+          <a href="https://github.com/yourusername/Quicktunel" target="_blank"
+            >GitHub</a
+          >
+        </nav>
+      </div>
+    </header>
 
-  <!-- Features -->
-  <section id="features">
-    <div class="container">
-      <h2>Why QuickTunel?</h2>
-      <div class="features-grid">
-        <div class="feature">
-          <h3>🚀 Fast setup</h3>
-          <p>Start sharing in seconds. Just install and run a single command.</p>
-        </div>
-        <div class="feature">
-          <h3>🔒 Secure tunnels</h3>
-          <p>Each tunnel is authenticated and encrypted end-to-end with JWT tokens.</p>
-        </div>
-        <div class="feature">
-          <h3>⚙️ Developer-friendly</h3>
-          <p>Built with Node.js, WebSockets, and Express — fully open source.</p>
+    <!-- Hero -->
+    <section id="hero">
+      <div class="container hero-content">
+        <h2>Instant public URLs for your local servers</h2>
+        <p>
+          Share your local development environment with the world securely.
+          Simple, fast, and open source.
+        </p>
+        <a href="#docs" class="btn">Get Started</a>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features">
+      <div class="container">
+        <h2>Why QuickTunel?</h2>
+        <div class="features-grid">
+          <div class="feature">
+            <h3>🚀 Fast setup</h3>
+            <p>
+              Start sharing in seconds. Just install and run a single command.
+            </p>
+          </div>
+          <div class="feature">
+            <h3>🔒 Secure tunnels</h3>
+            <p>
+              Each tunnel is authenticated and encrypted end-to-end with JWT
+              tokens.
+            </p>
+          </div>
+          <div class="feature">
+            <h3>⚙️ Developer-friendly</h3>
+            <p>
+              Built with Node.js, WebSockets, and Express — fully open source.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Docs -->
-  <section id="docs">
-    <div class="container">
-      <h2>Quick Start</h2>
-      <pre><code>
+    <!-- Docs -->
+    <section id="docs">
+      <div class="container">
+        <h2>Quick Start</h2>
+        <pre><code>
 # Install the client
 npm install -g QuickTunel
 
@@ -64,29 +89,32 @@ QuickTunel start --port 5173
 # View your public URL
 https://myapp.QuickTunel.dev
       </code></pre>
-      <p>
-        Read full documentation on
-        <a href="https://github.com/yourusername/QuickTunel" target="_blank">GitHub →</a>
-      </p>
-    </div>
-  </section>
+        <p>
+          Read full documentation on
+          <a href="https://github.com/yourusername/QuickTunel" target="_blank"
+            >GitHub →</a
+          >
+        </p>
+      </div>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>© 2025 QuickTunel. Made with ❤️ by developers, for developers.</p>
-    </div>
-  </footer>
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>© 2025 QuickTunel. Made with ❤️ by developers, for developers.</p>
+      </div>
+    </footer>
 
-  <script>
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute("href"))
-          .scrollIntoView({ behavior: "smooth" });
+    <script>
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document
+            .querySelector(this.getAttribute("href"))
+            .scrollIntoView({ behavior: "smooth" });
+        });
       });
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>
